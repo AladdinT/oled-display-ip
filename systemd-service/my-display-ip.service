@@ -1,0 +1,11 @@
+[Unit]
+Description=Displays IP address over an ssd1306 oled displays 
+After=network.target
+
+[Service]
+ExecStart=/home/pi/workspace/oled-display-ip/oled-display-ip.sh
+ExecStop=/bin/python3 -c "import Adafruit_SSD1306 as ada; oled=ada.SSD1306_128_64(rst=None); oled.clear(); oled.display();"
+User=pi
+
+[Install]
+WantedBy=multi-user.target
